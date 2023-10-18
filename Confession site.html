@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Klai</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #faedcd;
+        }
+        #question {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        #options {
+            margin: 20px;
+        }
+        .option {
+            display: inline-block;
+            cursor: pointer;
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: white;
+        }
+        .option:hover {
+            background-color: #333;
+            color: #fff;
+        }
+        #no {
+            position: absolute;
+        }
+        #arrow {
+            display: none;
+        }
+        @keyframes animateNo {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="question">Can I COURT you in the future?????</h1>
+    <div id="options">
+        <a href="file:///C:/Users/PCB/Desktop/study/klai%20files/proposal.html" class="option" id="yes">Yes</a>
+        <div class="option" id="no" onclick="animateNoAndShowArrow()">No</div>
+    </div>
+    <div id="arrow">
+        <img src="arrow.jpg" alt="Arrow pointing to Yes" style="width: 50px;">
+    </div>
+    <div id="image-container">
+        <img id="image" style="display: none;" src="" alt="Image">
+    </div>
+    <script>
+        let noClicks = 0;
+        let arrowClicks = 0;
+
+        function animateNoAndShowArrow() {
+            const noButton = document.getElementById("no");
+            const arrow = document.getElementById("arrow");
+            const imageContainer = document.getElementById("image-container");
+            const image = document.getElementById("image");
+
+            noClicks++;
+
+            if (noClicks >= 3) {
+                noButton.style.animation = "animateNo 1s ease-in-out infinite";
+            }
+
+            if (noClicks >= 3) {
+    arrowClicks++;
+    if (arrowClicks >= 3) {
+        arrow.style.display = "block"; // Corrected: Use "display" instead of "display"
+    }
+}
+
+
+            // Display a different image on each click
+            const imageSources = [
+                "plead1.jpg",
+                "clickyes.jpg",
+                "cry.jpg",
+                "please1.gif",
+                "please.gif",
+                "plead1.jpg",
+                "clickyes.jpg",
+                "cry.jpg",
+                "please1.gif",
+                "please.gif",
+                "plead1.jpg",
+                "clickyes.jpg",
+                "cry.jpg",
+                "please1.gif",
+                "please.gif",
+                "plead1.jpg",
+                "clickyes.jpg",
+                "cry.jpg",
+                "please1.gif",
+                "please.gif",
+            ];
+
+            image.src = imageSources[noClicks - 1];
+            image.style.display = "block";
+
+            // Move the "No" button to a random position after each click
+            const maxWidth = window.innerWidth - noButton.clientWidth;
+            const maxHeight = window.innerHeight - noButton.clientHeight;
+            const randomX = Math.floor(Math.random() * maxWidth);
+            const randomY = Math.floor(Math.random() * maxHeight);
+            noButton.style.left = randomX + "px";
+            noButton.style.top = randomY + "px";
+        }
+    </script>
+</body>
+</html>
